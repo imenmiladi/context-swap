@@ -111,6 +111,11 @@ I used **Claude** (Anthropic's chat assistant) as a pair-programming partner, al
 
 <img src="examples/curly_hair_woman.png" width="700">
 
+**Fashion model in studio (partial failure).** The cut-out is clean (sequins, sleeves, earrings),
+but the light falloff on the backdrop (dark cloud at the top left, floor/wall band at the bottom right)
+is treated as a shadow and tinted in the result.
+
+<img src="examples/studio_model_failure.png" width="700">
 
 ## Known limitations and next steps
 

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.streamlit/
+*.egg-info/
+# keep examples, ignore scratch outputs
+out/
+*_alpha.png
+*_shadow.png

@@ -7,9 +7,18 @@ Segmentation: [BiRefNet](https://huggingface.co/ZhengPeng7/BiRefNet). Interfaces
 
 ## Run it (one command)
 
+From the project root (the folder that contains `app.py`), in a terminal
+(Git Bash, macOS/Linux Terminal, cmd, or PowerShell 7):
+
 ```bash
 pip install -r requirements.txt && streamlit run app.py
 ```
+
+Windows PowerShell 5 does not support `&&`; use `;` instead:
+`pip install -r requirements.txt; streamlit run app.py`
+
+Tested on Windows with Git Bash and Python 3.11, inside a virtual environment
+(`python -m venv .venv`, then `source .venv/Scripts/activate`).
 
 CLI:
 

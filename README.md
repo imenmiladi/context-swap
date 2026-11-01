@@ -69,9 +69,7 @@ image -> BiRefNet (1024x1024) -> soft alpha -> resized to the image
 |---|---|
 | Curly hair on a saturated blue wall | Works. Individual curls are kept, no blue halo, the cast shadow becomes dark orange. A light fringe next to the shadow was fixed by nearest-pixel propagation. |
 | Curly hair, light grey wall, hard shadow on the right | Works. Shadow kept as a darker orange. |
-| Person sitting on a wooden stool, white brick wall | **Failure, then fix.** BiRefNet leaves the stool in the background; my first shadow detector treated the stool and the bricks as shadows. Fixed with the hue test and the manual wand.|
 | Fashion model in studio, lit backdrop | **Partial failure.** Cut-out is excellent (sequins, sleeves, earrings). But the studio light falloff (top-left cloud, floor/wall band) is detected as shadow. Not fixed: mitigated with `--bg-model gradient` and a higher threshold. |
-| White product on white / glass / bottle | |
 
 
 

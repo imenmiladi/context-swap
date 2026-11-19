@@ -20,7 +20,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("-o", "--output", help="output PNG (default: <input>_<hex>.png)")
     p.add_argument("--engine", choices=list(ENGINES), default="birefnet", help="segmentation engine")
     p.add_argument("--max-side", type=int, default=2048, help="downscale if longest side is larger (0 = no cap)")
-
+    p.add_argument("--bg-img", help="optional background image to match the subject's shadow hue")
     s = p.add_argument_group("shadows")
     s.add_argument("--keep-shadows", action="store_true", help="keep the subject's cast shadow, tinted by the new colour")
     s.add_argument("--shadow-strength", type=float, default=0.8, help="0..1 (default 0.8)")
@@ -55,7 +55,13 @@ def main(argv=None) -> int:
         decontaminate=not args.no_decontaminate,
         edge_shrink=args.edge_shrink,
         feather=args.feather,
+        bg_img=args.bg_img,
     )
+    if bg_img != None if args.bg_img else None:
+        if not Path(bg_img).exists():
+            print(f"error: background image {bg_img} does not exist", file=sys.stderr)
+            return 1
+        
     res = process(inp, params, engine=args.engine, max_side=args.max_side)
     res.image.save(out)
     if args.save_debug:

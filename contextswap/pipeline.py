@@ -35,7 +35,7 @@ class RenderParams:
     decontaminate: bool = True        # remove old-background colour bleeding at the edges
     edge_shrink: int = 0              # px, erode the matte to cut halos
     feather: float = 0.0              # px, blur the matte for softer edges
-
+    bg_img: str | None = None          # optional background image to match the subject's shadow hue
 
 @dataclass
 class Result:

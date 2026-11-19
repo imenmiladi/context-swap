@@ -7,9 +7,18 @@ Segmentation: [BiRefNet](https://huggingface.co/ZhengPeng7/BiRefNet). Interfaces
 
 ## Run it (one command)
 
+From the project root (the folder that contains `app.py`), in a terminal
+(Git Bash, macOS/Linux Terminal, cmd, or PowerShell 7):
+
 ```bash
 pip install -r requirements.txt && streamlit run app.py
 ```
+
+Windows PowerShell 5 does not support `&&`; use `;` instead:
+`pip install -r requirements.txt; streamlit run app.py`
+
+Tested on Windows with Git Bash and Python 3.11, inside a virtual environment
+(`python -m venv .venv`, then `source .venv/Scripts/activate`).
 
 CLI:
 
@@ -69,7 +78,7 @@ image -> BiRefNet (1024x1024) -> soft alpha -> resized to the image
 |---|---|
 | Curly hair on a saturated blue wall | Works. Individual curls are kept, no blue halo, the cast shadow becomes dark orange. A light fringe next to the shadow was fixed by nearest-pixel propagation. |
 | Curly hair, light grey wall, hard shadow on the right | Works. Shadow kept as a darker orange. |
-| Fashion model in studio, lit backdrop | **Partial failure.** Cut-out is excellent (sequins, sleeves, earrings). But the studio light falloff (top-left cloud, floor/wall band) is detected as shadow. Not fixed: mitigated with `--bg-model gradient` and a higher threshold. |
+| Fashion model in studio, lit backdrop | **Partial failure.** Cut-out is excellent (sequins, sleeves, earrings). But the studio light falloff (top-left cloud, floor/wall band) is detected as shadow. Not fixed : Next step: a "shadow reach" that attenuates the shadow with the distance to the subject. |
 
 
 

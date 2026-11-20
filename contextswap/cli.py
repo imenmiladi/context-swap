@@ -57,10 +57,8 @@ def main(argv=None) -> int:
         feather=args.feather,
         bg_img=args.bg_img,
     )
-    if bg_img != None if args.bg_img else None:
-        if not Path(bg_img).exists():
-            print(f"error: background image {bg_img} does not exist", file=sys.stderr)
-            return 1
+    if args.bg_img != None:
+        raise NotImplementedError("bg_img is not None, but this feature is not yet implemented.")
         
     res = process(inp, params, engine=args.engine, max_side=args.max_side)
     res.image.save(out)

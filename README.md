@@ -86,25 +86,6 @@ image -> BiRefNet (1024x1024) -> soft alpha -> resized to the image
 
 about 8 hours (setup, segmentation, shadows, UI, testing on photos, README).
 
-## How I used AI tools
-
-I used **Claude** (Anthropic's chat assistant) as a pair-programming partner, alongside my own work.
-
-**My own work**
-- Studied the existing segmentation models and ran my own benchmark to choose one.
-- Chose the task, the scope and the priorities given the time available.
-- Ran the code on my own photos, found the failures (false shadows on a stool and bricks, a light
-  fringe along curly hair, shadows caused by studio lighting, a page-scroll bug in the polygon tool),
-  and decided how to handle each one after doing my own research and banchmark.
-- Judged the results visually and decided when they were good enough to submit.
-
-**What Claude helped with**
-- Discussing options and trade-offs (soft alpha, edge decontamination, how to recover shadows).
-- Writing most of the code (modules, CLI, Streamlit app) and the synthetic tests, which I then
-  ran, read and adjusted.
-- Proposing fixes for the failures I found: hue test, nearest-pixel extension, manual selection,
-  callbacks instead of `st.rerun()`.
-
 **How I checked the output**
 - Tests on a synthetic scene with a known matte (`pytest`).
 - Visual checks on real photos with the debug views (matte and shadow map).

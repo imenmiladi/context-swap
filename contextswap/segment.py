@@ -50,7 +50,7 @@ class BiRefNetSegmenter:
         with torch.no_grad():
             pred = self.model(x)[-1].sigmoid().float().cpu()  # last output = final mask
         pred = torch.nn.functional.interpolate(pred, size=(h, w), mode="bilinear", align_corners=False)
-        return (pred[0, 0].numpy()>0.5).astype(np.uint8)
+        return pred[0, 0].numpy().clip(0.0, 1.0)
 
 
 def _grabcut_alpha(image: Image.Image) -> np.ndarray:
